@@ -25,7 +25,7 @@ pipeline{
             steps{
                 sh 'pwd; cd eks/; terraform init'
                 sh 'pwd; cd eks/; terraform plan -out tfplan'
-                sh 'pwd; cd eks/; terraform show -no-colour tfplan > tfplan.txt'
+                sh 'pwd; cd eks/; terraform show -no-color tfplan > tfplan.txt'
             }
         }
 
