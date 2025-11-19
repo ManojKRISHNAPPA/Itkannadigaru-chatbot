@@ -56,6 +56,16 @@ pipeline{
                 }
             }
         }
+
+        stage('Backup-Stage'){
+            steps{
+                sh '''
+                    pwd 
+                    cd eks/
+                    aws s3 cp *.tfstate s3://itkannadogaru-terraform-tf-backup/Chat-bot/eks
+                '''
+            }
+        }
     }
 
 }
