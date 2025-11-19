@@ -62,7 +62,7 @@ pipeline{
                 sh '''
                     pwd 
                     cd eks/
-                    aws s3 cp *.tfstate s3://itkannadogaru-terraform-tf-backup/Chat-bot/eks
+                    aws s3 cp terraform.tfstate s3://itkannadogaru-terraform-tf-backup/Chat-bot/eks/
                 '''
             }
         }
