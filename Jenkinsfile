@@ -19,15 +19,15 @@ pipeline{
                 '''
             } 
         }
-        stage('Testing-Stage'){
-            steps{
-                sh '''
-                    docker kill itkannadigaru-chat-bot
-                    docker rm itkannadigaru-chat-bot
-                    docker run -it -d --name itkannadigaru-chat-bot -p 9001:8501 ${IMAGE_NAME}
-                '''
-            } 
-        }
+        // stage('Testing-Stage'){
+        //     steps{
+        //         sh '''
+        //             docker kill itkannadigaru-chat-bot
+        //             docker rm itkannadigaru-chat-bot
+        //             docker run -it -d --name itkannadigaru-chat-bot -p 9001:8501 ${IMAGE_NAME}
+        //         '''
+        //     } 
+        // }
         stage('Login to Docker Hub') {
             steps {
                 script {
