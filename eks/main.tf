@@ -204,9 +204,9 @@ resource "aws_eks_node_group" "itkannadigaru" {
   subnet_ids = aws_subnet.itkannadigaru_subnet[*].id
 
   scaling_config {
-    desired_size = 3
-    max_size     = 50
-    min_size     = 3
+    desired_size = 10
+    max_size     = 100
+    min_size     = 10
   }
 
   instance_types = ["c7i-flex.large"]
