@@ -57,15 +57,6 @@ pipeline{
             }
         }
 
-        stage('Backup-Stage'){
-            steps{
-                sh '''
-                    pwd 
-                    cd eks/
-                    aws s3 cp terraform.tfstate s3://itkannadogaru-terraform-statefile-backup/Chat-bot/dev-eks/
-                '''
-            }
-        }
     }
 
 }
