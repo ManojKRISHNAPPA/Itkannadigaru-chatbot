@@ -1,5 +1,5 @@
 variable "ssh_key_name" {
-  description = "use your own ssh keypair"
+  description = "mysshkey"
   type = string
   default = "itkannadigaru"
 }
