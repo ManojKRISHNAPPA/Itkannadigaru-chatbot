@@ -1,0 +1,50 @@
+pipeline{
+
+    agent any
+
+    environment{
+        IMAGE_NAME = "virunaik1505/itkannadigaru:${GIT_COMMIT}"
+    }
+
+    stages {
+        stage('Git_Checkout'){
+            steps{
+                git url:'https://github.com/ManojKRISHNAPPA/Itkannadigaru-chatbot.git' branch 'Dev'
+
+            }
+        }
+
+        stage('building stage'){
+            steps{
+                sh '''
+                    printenv
+                    docker build -t ${IMAGE_NAME} .
+                '''
+            }
+        }
+
+        Stage('login to dockerhub'){
+
+            steps{
+                withCredentials([
+                    usernamePassword(
+                        credentialsId: 'dockercreds'
+                        usernameVariable: 'DOCKER_USERNAME'
+                        passwordVariable:  'DOCKER_PASSWORD'
+                    ) {
+                        sh 'echo DOCKER_PASSWORD | docker login -u DOCKER_PASSWORD --password-stdin'
+                    }
+                ])
+            }
+        }
+
+        stage(Push Images){
+            steps{
+                sh '''
+                    docker push $(IMAGE_NAME)
+                '''
+            }
+        }
+    }
+
+}
